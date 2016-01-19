@@ -1,32 +1,40 @@
-function loadAPI() {
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'https://api.github.com/users', false);
-	xhr.send();
-	if (xhr.status != 200) {
-		alert('Error ' + xhr.status + ': ' + xhr.statusText);
-	} else {
-		alert(xhr.responseText);
-	}
-}	
+$(document).ready();
+//Start request
+
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', 'https://api.github.com/users', false);
+			xhr.send();
+//Request check
+            if (xhr.status != 200) {
+				alert('Error ' + xhr.status + ': ' + xhr.statusText);
+			}
+            JSON.stringify(apidata)
+            
+			var apidata = JSON.parse(xhr.responseText);
+
+            for (var i = 0; i < 2; i++)
+            {
+                getUser(apidata[i]);
+            }
+
+            function getUser(mass) {
+            $('#listusers').append("<div class='user anim aslide' data-json='" + JSON.stringify(mass) + "'>Логин: <a href='" + mass['html_url'] + "' target='_blank'>@" + mass['login'] + "</a>, Аватар: <img id='userimg' src='" + mass['avatar_url'] + "' width='75'>, Email: " + "Email code here" + "<hr /><a onclick='showContent(this)' class='butt'>Подробнее о пользователе</a></div><br>");
+            }
 
 
 
 
-
-
-
-
-//old code
-
+//old project code
 
 
 /*
+
 $(document).ready(function() {
             $.ajax(
 			{
 				type: 'GET',
 				url: 'https://api.github.com/users',
-				data: 'since=' + 50,
+				data: 'since=' + 0,
 				success: function(dater)
 				{
 					$('#listusers').html();
@@ -37,9 +45,7 @@ $(document).ready(function() {
 				}
 			});
             
-            */
-            
-			/*function getUser(mass)
+			function getUser(mass)
 			{
 				$.ajax(
 				{
@@ -50,11 +56,12 @@ $(document).ready(function() {
 					{
 						mass['email'] = datas['email'];
 						mass['name'] = datas['name'];
+                        console.log(mass);
 						$('#listusers').append("<div class='user anim aslide' data-json='" + JSON.stringify(mass) + "'>Логин: <a href='" + mass['html_url'] + "' target='_blank'>@" + mass['login'] + "</a>, Аватар: <img id='userimg' src='" + mass['avatar_url'] + "' width='75'>, Email: " + datas['email'] + "<hr /><a onclick='showContent(this)' class='butt'>Подробнее о пользователе</a></div><br>");
 					}
 				});
 			}
-		});*/
+		});
 /*
 		function showContent(thiser)
 		{
