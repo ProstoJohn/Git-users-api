@@ -1,7 +1,7 @@
 $(document).ready();
 //Start request
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://api.github.com/users' + '?since=0', false);
+xhr.open('GET', 'https://api.github.com/users' + '?since=10909426', false);
 xhr.send();
 //Request check
 if (xhr.status != 200)
@@ -10,7 +10,7 @@ if (xhr.status != 200)
 }
 var apidata = JSON.parse(xhr.responseText);
 JSON.stringify(apidata);
-for (var i = 0; i < 10; i++)
+for (var i = 0; i < 1; i++)
 {
 	getUser(apidata[i]);
 }
@@ -44,7 +44,7 @@ function showContent(thiser)
 	reposlist += '</ul>';
 	$('#info').closest('.neww').remove().promise().done(function()
 	{
-		$('#listusers').prepend('<div class="neww anim bslide"><div id="info"><img id="userimg" src="' + data['avatar_url'] + '" width="150"> <ul type="square"><li>Имя пользователя: <b>' + data['login'] + '</b></li><li>Email: <b>' + data['email'] + '</b></li><li>Полное имя: <b>' + (data['name'] = null ? 'Не указано пользователем' : data['name']) + '</b></li></ul> <div id="reposl">Список репозиториев: ' + reposlist + ' </div> <a onclick="$(\'#info\').closest(\'.neww\').remove(); $(\'.user\').css(\'display\', \'block\');" class="butt">X</a></div></div>');
+		$('#listusers').prepend('<div class="neww anim bslide"><div id="info"><img id="userimg" src="' + data['avatar_url'] + '" width="150"> <ul type="square"><li>Имя пользователя: <b>' + data['login'] + '</b></li><li>Email: <b>' + (data['email'] == null ? 'Не указан пользователем' : data['email']) + '</b></li><li>Полное имя: <b>' + (data['name'] == null ? 'Не указан пользователем' : data['name']) + '</b></li></ul> <div id="reposl">Список репозиториев: ' + reposlist + ' </div> <a onclick="$(\'#info\').closest(\'.neww\').remove(); $(\'.user\').css(\'display\', \'block\');" class="butt">X</a></div></div>');
 	});
 }
 
