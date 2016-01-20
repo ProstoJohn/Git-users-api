@@ -24,7 +24,7 @@ function getUser(mass)
 	JSON.stringify(datas);
 	mass['email'] = datas['email'];
 	mass['name'] = datas['name'];
-	$('#listusers').append("<div class='user anim aslide' data-json='" + JSON.stringify(mass) + "'>Логин: <a href='" + mass['html_url'] + "' target='_blank'>@" + mass['login'] + "</a>, Аватар: <img id='userimg' src='" + mass['avatar_url'] + "' width='75'>, Email: " + mass['email'] + "<hr /><a onclick='showContent(this)' class='butt'>Подробнее о пользователе</a></div><br>");
+	$('#listusers').append("<div class='user anim aslide' data-json='" + JSON.stringify(mass) + "'>Логин: <a href='" + mass['html_url'] + "' target='_blank'>@" + mass['login'] + "</a> <img id='userimg' src='" + mass['avatar_url'] + "' width='75'> <br> Email: " +(mass['email'] == null ? 'Не указан пользователем' : mass['email']) + "<hr /><a onclick='showContent(this)' class='butt'>Подробнее о пользователе</a></div><br>");
 }
 
 function showContent(thiser)
@@ -44,7 +44,7 @@ function showContent(thiser)
 	reposlist += '</ul>';
 	$('#info').closest('.neww').remove().promise().done(function()
 	{
-		$('#listusers').prepend('<div class="neww anim bslide"><div id="info"><img id="userimg" src="' + data['avatar_url'] + '" width="150"> <ul type="square"><li>Имя пользователя: <b>' + data['login'] + '</b></li><li>Email: <b>' + (data['email'] == null ? 'Не указан пользователем' : data['email']) + '</b></li><li>Полное имя: <b>' + (data['name'] == null ? 'Не указан пользователем' : data['name']) + '</b></li></ul> <div id="reposl">Список репозиториев: ' + reposlist + ' </div> <a onclick="$(\'#info\').closest(\'.neww\').remove(); $(\'.user\').css(\'display\', \'block\');" class="butt">X</a></div></div>');
+		$('#listusers').prepend('<div class="neww anim bslide"><div id="info"><img id="userimg" src="' + data['avatar_url'] + '" width="150"> <ul type="square"><li>Имя пользователя: <b>' + data['login'] + '</b></li><li>Email: <b>' + (data['email'] == null ? 'Не указан пользователем' : data['email']) + '</b></li><li>Полное имя: <b>' + (data['name'] == null ? 'Не указано пользователем' : data['name']) + '</b></li></ul> <div id="reposl">Список репозиториев: ' + reposlist + ' </div> <hr> <a onclick="$(\'#info\').closest(\'.neww\').remove(); $(\'.user\').css(\'display\', \'block\');" class="buttexit">X</a></div></div>');
 	});
 }
 
@@ -56,7 +56,7 @@ function reposvar(thiser)
 	xhr4.send();
 	var commitlist = JSON.parse(xhr4.responseText);
 	JSON.stringify(commitlist);
-	$(thiser).closest('li').append('<br><p><font color="blue">Имя создателя: </font>' + data['login'] + '</p><font color="red" size="8">Список коммитов:</font>');
+	$(thiser).closest('li').append('<br><p><font color="blue">Имя создателя: </font>' + data['login'] + '</p><font color="red" size="7">Список коммитов:</font>');
 	var spcommit;
 	for (var i = 0; i < commitlist.length; i++)
 	{
@@ -74,7 +74,7 @@ function reposforks(thiser)
 	var forkslist = JSON.parse(xhr5.responseText);
 	JSON.stringify(forkslist);
 	var username;
-	username = '<br><font color="red" size="8">Список форков:</font>';
+	username = '<br><font color="red" size="7">Список форков:</font>';
 	$(thiser).closest('li').append(username);
 	for (var i = 0; i < forkslist.length; i++)
 	{
