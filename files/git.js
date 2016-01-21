@@ -4,10 +4,15 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://api.github.com/users' + '?since=10909426', false);
 xhr.send();
 //Request check
-if (xhr.status != 200)
+if (xhr.status == 403) 
+{
+  alert( 'Лимит запросов GitHub исчерпан. Попробуйте позже...' );
+} else if (xhr.status != 200)
 {
 	alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
 }
+
+
 var apidata = JSON.parse(xhr.responseText);
 JSON.stringify(apidata);
 for (var i = 0; i < 1; i++)
@@ -40,7 +45,9 @@ function showContent(thiser)
 	{
 		reposlist += '<li id="marginli" data-json=\'{"name": "' + reposinfo[i]['name'] + '", "login": "' + reposinfo[i]['owner']['login'] + '"}\'><a class="buttrep" onclick="reposvar(this); reposforks(this)">' + reposinfo[i]['name'] + '</a></li>';
 	}
+    
 	$('.user').css('display', 'none');
+    
 	reposlist += '</ul>';
 	$('#info').closest('.neww').remove().promise().done(function()
 	{
