@@ -1,7 +1,7 @@
 $(document).ready();
 //Start request
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://api.github.com/users' + '?since=10909426', false);
+xhr.open('GET', 'https://api.github.com/users' + '?since=0', false);
 xhr.send();
 //Request check
 if (xhr.status == 403) 
@@ -15,7 +15,7 @@ if (xhr.status == 403)
 
 var apidata = JSON.parse(xhr.responseText);
 JSON.stringify(apidata);
-for (var i = 0; i < 1; i++)
+for (var i = 0; i < 10; i++)
 {
 	getUser(apidata[i]);
 }
@@ -23,7 +23,7 @@ for (var i = 0; i < 1; i++)
 function getUser(mass)
 {
 	var xhr2 = new XMLHttpRequest();
-	xhr2.open('GET', 'http://api.github.com/users/' + mass['login'], false);
+	xhr2.open('GET', 'https://api.github.com/users/' + mass['login'], false);
 	xhr2.send();
 	var datas = JSON.parse(xhr2.responseText);
 	JSON.stringify(datas);
@@ -36,7 +36,7 @@ function showContent(thiser)
 {
 	var data = JSON.parse($(thiser).closest('.user').attr('data-json'));
 	var xhr3 = new XMLHttpRequest();
-	xhr3.open('GET', 'http://api.github.com/users/' + data['login'] + '/repos', false);
+	xhr3.open('GET', 'https://api.github.com/users/' + data['login'] + '/repos', false);
 	xhr3.send();
 	var reposinfo = JSON.parse(xhr3.responseText);
 	JSON.stringify(reposinfo);
@@ -59,7 +59,7 @@ function reposvar(thiser)
 {
 	var data = JSON.parse($(thiser).closest('li').attr('data-json'));
 	var xhr4 = new XMLHttpRequest();
-	xhr4.open('GET', 'http://api.github.com/repos/' + data['login'] + '/' + data['name'] + '/commits', false);
+	xhr4.open('GET', 'https://api.github.com/repos/' + data['login'] + '/' + data['name'] + '/commits', false);
 	xhr4.send();
 	var commitlist = JSON.parse(xhr4.responseText);
 	JSON.stringify(commitlist);
@@ -76,7 +76,7 @@ function reposforks(thiser)
 {
 	var data = JSON.parse($(thiser).closest('li').attr('data-json'));
 	var xhr5 = new XMLHttpRequest();
-	xhr5.open('GET', 'http://api.github.com/repos/' + data['login'] + '/' + data['name'] + '/forks', false);
+	xhr5.open('GET', 'https://api.github.com/repos/' + data['login'] + '/' + data['name'] + '/forks', false);
 	xhr5.send();
 	var forkslist = JSON.parse(xhr5.responseText);
 	JSON.stringify(forkslist);
