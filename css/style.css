@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2&subset=latin,cyrillic);
 
 body {
-  background: #fafafa url(grey.png);
+  background: #fafafa url(/img/grey.png);
   font-family: 'Exo 2', sans-serif;
   font-size: 62.5%;
   line-height: 1;
