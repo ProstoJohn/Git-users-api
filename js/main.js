@@ -33,8 +33,17 @@ function getUser(usersList) {
   document.getElementById('listusers').appendChild(divList);
 }
 
-function showContent(userProfile) {
-  var data = JSON.parse($(userProfile).closest('.user').attr('data-json'));
+function closest(element,c){
+  var curElement = element;
+while(curElement && !curElement.classList.contains(c)) curElement=curElement.parentElement;
+return curElement;
+};
+
+function showContent(userProfile){
+  var el =  closest(userProfile,'user');
+  var data = JSON.parse(el.getAttribute('data-json'));
+  console.log(data);
+  //var data = JSON.parse($(userProfile).closest('.user').attr('data-json'));
   var xhr3 = new XMLHttpRequest();
   xhr3.open('GET', 'https://api.github.com/users/' + data['login'] + '/repos', false);
   xhr3.send();
