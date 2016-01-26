@@ -8,7 +8,7 @@ function showContent(userProfile) {
   JSON.stringify(reposinfo);
   var reposlist = '<ul class="repos">';
   for (var i = 0; i < reposinfo.length; i++) {
-    reposlist += '<li id="marginli" data-json=\'{"name": "' + reposinfo[i]['name'] + '", "login": "' + reposinfo[i]['owner']['login'] + '"}\'><a class="buttrep" onclick="reposvar(this); reposforks(this)">' + reposinfo[i]['name'] + '</a></li>';
+    reposlist += '<li class="marginli" data-json=\'{"name": "' + reposinfo[i]['name'] + '", "login": "' + reposinfo[i]['owner']['login'] + '"}\'><a class="buttrep" onclick="reposvar(this); reposforks(this)">' + reposinfo[i]['name'] + '</a></li>';
   }
   // $('.user').css('display', 'none');
   var elems = document.getElementsByClassName('user');

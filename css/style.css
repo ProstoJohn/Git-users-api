@@ -205,7 +205,7 @@ a.buttexit:active {
 #reposl {
 	padding: 20px;
 }
-#marginli {
+.marginli {
 	margin: 25px;
 	list-style-type: none;
 }
