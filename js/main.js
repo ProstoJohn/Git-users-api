@@ -1,7 +1,7 @@
 window.onload = function() {
   var requestValue = prompt("Количество запросов..");
-  if (requestValue > 30) {
-    alert("Количество запросов больше 30 запрещено.");
+  if (requestValue == 0 || requestValue > 30) {
+    alert("Количество запросов не может быть равно 0 и быть больше 30");
     location.reload()
   }
   //Start request

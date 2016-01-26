@@ -1,6 +1,6 @@
 function getUser(usersList) {
   var xhr2 = new XMLHttpRequest();
-  xhr2.open('GET', 'https://api.github.com/users/' + usersList['login'], false);
+  xhr2.open('GET', 'https://api.github.com/users/' + usersList.login, false);
   xhr2.send();
   var data = JSON.parse(xhr2.responseText);
   JSON.stringify(data);
