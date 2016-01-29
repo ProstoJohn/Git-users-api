@@ -3,7 +3,6 @@ function getUser(usersList) {
   xhr2.open('GET', 'https://api.github.com/users/' + usersList.login, false);
   xhr2.send();
   var data = JSON.parse(xhr2.responseText);
-  JSON.stringify(data);
   usersList.email = data.email ? data.email : 'Не указан пользователем';
   usersList.name = data.name ? data.name : 'Не указан пользователем';
   var divList = document.createElement('span');

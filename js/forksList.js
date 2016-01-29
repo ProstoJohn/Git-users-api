@@ -4,7 +4,6 @@ function reposforks(forksList) {
   xhr5.open('GET', 'https://api.github.com/repos/' + data.login + '/' + data.name + '/forks', false);
   xhr5.send();
   var forkslist = JSON.parse(xhr5.responseText);
-  JSON.stringify(forkslist);
   var divForksFirst = document.createElement('div');
   divForksFirst.innerHTML = '<br><font color="red" size="7">Список форков:</font>';
   closestF(forksList, 'marginli').appendChild(divForksFirst);

@@ -1,5 +1,5 @@
 window.onload = function() {
-  var requestValue = prompt("Количество запросов..");
+  var requestValue = prompt("Сколько пользователей вам необходимо получить?");
   if (requestValue == 0 || requestValue > 30) {
     alert("Количество запросов не может быть равно 0 и быть больше 30");
     location.reload()
@@ -14,9 +14,9 @@ window.onload = function() {
   } else if (xhr.status != 200) {
     alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
   }
-  var apidata = JSON.parse(xhr.responseText);
+  var APIData = JSON.parse(xhr.responseText);
   for (var i = 0; i < requestValue; i++) {
-    getUser(apidata[i]);
+    getUser(APIData[i]);
   }
 };
 
