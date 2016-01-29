@@ -8,11 +8,13 @@ body {
   line-height: 1;
   color: #616161;
   padding: 35px 0;
+
 }
 
-#loadimg {
- display: none;
-  text-align: center;
+#page-preloader {
+    position: fixed;
+    display: none;
+    text-align: center;
 }
 
 br {

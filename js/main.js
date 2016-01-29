@@ -4,6 +4,7 @@ window.onload = function() {
     alert("Количество запросов не может быть равно 0 и быть больше 30");
     location.reload()
   }
+  document.getElementById('page-preloader').style.display = 'block';
   //Start request
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.github.com/users' + '?since=0', false);
@@ -18,4 +19,5 @@ window.onload = function() {
   for (var i = 0; i < requestValue; i++) {
     getUser(APIData[i]);
   }
+  document.getElementById('page-preloader').style.display = 'none';
 };
